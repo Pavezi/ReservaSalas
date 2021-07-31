@@ -7,8 +7,8 @@ if (isset($_POST["id_sala"])) {
     $reserva = new Reserva();
     $reserva->setId($_POST["id"]);
     $reserva->setId_sala($_POST["id_sala"]);
-    $reserva->setHorario_de_uso($_POST["horario_de_uso"]);
-    $reserva->setDia_de_uso($_POST["dia_de_uso"]);
+    $reserva->setHorario_de_uso($_POST["horario_uso"]);
+    $reserva->setDia_de_uso($_POST["dia_uso"]);
     $reserva->setResponsavel($_POST["responsavel"]);
     $reserva->setCurso($_POST["curso"]);
     $reserva->setOcupado($_POST["ocupado"]);
