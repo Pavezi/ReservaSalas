@@ -1,12 +1,55 @@
 body{
-    font: normal 13pt Arial;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+.cadastro_salas{
+    box-shadow: 0px 0px 2px;
+    width: 400px;
+    padding: 10px;
+    margin: 10px;
+
+}
+.botao_criar{
+    margin: 5px;
+    background: #014f86;
+    color: white;
+    border:none;
+    height: 25pt;
+    width: 70pt;
+    border-radius: 4px;
+    position: relative;
+    left: 10px;
 }
 .card_sala{
-    background-color: #deb887;
+    background-color: white;
     width: 200pt;
     padding: 10pt;
-    margin: 5pt;
+    margin: 10pt;
+    margin-bottom: 20px;
+    box-shadow:  2px 2px 12px #8f8b8b;
 }
 .indent-1 section {
     float: left;
+}
+.nome_sala{
+    font-weight: bold;
+}
+.botao_mais{
+    margin: 15px;
+    border: none;
+    background: none;
+    color: #014f86;
+    font-weight: bold;
+    position: relative;
+    left: 90px;
+}
+.botao_reservar{
+    margin: 5px;
+    background: #014f86;
+    color: white;
+    border:none;
+    height: 25pt;
+    width: 70pt;
+    border-radius: 4px;
+    position: relative;
+    left: 90px;
 }
