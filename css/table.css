@@ -1,0 +1,52 @@
+table {
+        width: 90%;
+    }
+
+tr:after {
+
+}
+
+thead th {
+    height: 90%;
+
+    /*text-align: left;*/
+}
+
+tbody {
+    height: 90%;
+
+}
+
+thead {
+    /* fallback */
+}
+
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+    vertical-align: middle;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2; text-align: center;}
+
+
+#customers th {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+}
