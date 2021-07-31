@@ -42,7 +42,7 @@
 	        <img src="imagens/livro.png" style="height: 23px; width: 20px; padding-bottom: 2px;"> Livros
 	      </a>
 	      <div class="dropdown-menu">
-	        <a class="dropdown-item" href="cadastroLivro.php">Cadastro Livro</a>
+	        <a class="dropdown-item" href="cadastroReserva.php">Cadastro Reserva</a>
 	        <a class="dropdown-item" href="pesquisaLivro.php">Pesquisa Livro</a>
 	      </div>
       </li>

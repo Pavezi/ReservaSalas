@@ -2,17 +2,17 @@
 
 require_once 'config.php';
 
-if (isset($_POST["id_sala"])) {
+
     
     $reserva = new Reserva();
-    $reserva->setId($_POST["id"]);
-    $reserva->setId_sala($_POST["id_sala"]);
-    $reserva->setHorario_de_uso($_POST["horario_uso"]);
-    $reserva->setDia_de_uso($_POST["dia_uso"]);
-    $reserva->setResponsavel($_POST["responsavel"]);
-    $reserva->setCurso($_POST["curso"]);
-    $reserva->setOcupado($_POST["ocupado"]);
-    $reserva->setObservacao($_POST["observacao"]);
+    $reserva->setId(1);
+    $reserva->setId_sala(1);
+    $reserva->setHorario_de_uso('4:20');
+    $reserva->setDia_de_uso('2021-06-21');
+    $reserva->setResponsavel('cleiton');
+    $reserva->setCurso('raul');
+    $reserva->setOcupado(true);
+    $reserva->setObservacao('muito loco');
 
     try {
         $result = $reserva->insereDados($reserva->getId(), $reserva->getIdSala(), $reserva->getHorarioDeUso(), $reserva->getDiaDeUso(), $reserva->getResponsavel(), $reserva->getCurso(), $reserva->getOcupado(), $reserva->getObservacao());
@@ -35,7 +35,6 @@ if (isset($_POST["id_sala"])) {
     } catch (ErrorException $e) {
         echo $e->getMessage();
         
-    } 
 }
 
 ?>

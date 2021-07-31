@@ -1,12 +1,12 @@
 <?php
 
-class Usuario
+class Sala
 {
     
-    private $Id;
+    private $id;
     private $numero;
     private $predio;
-    private $is_lab;
+    private $lab;
     /**
      * @return mixed
      */
@@ -36,7 +36,7 @@ class Usuario
      */
     public function getIs_lab()
     {
-        return $this->is_lab;
+        return $this->lab;
     }
 
     /**
@@ -64,24 +64,24 @@ class Usuario
     }
 
     /**
-     * @param mixed $is_lab
+     * @param mixed $lab
      */
-    public function setIs_lab($is_lab)
+    public function setIs_lab($lab)
     {
-        $this->is_lab = $is_lab;
+        $this->lab = $lab;
     }
 
-    public function insereDados($id, $numero, $predio, $is_lab)
+    public function insereDados($id, $numero, $predio, $lab)
     {
-        $conn = new mysqli("localhost", "root", "root", "reserva");
+        $conn = new mysqli("us-cdbr-east-04.cleardb.com", "b638c2eed6dd4e", "bc103914", "heroku_28d45ded57ee25e");
         
         if ($conn->connect_error) {
             echo "error: " . $conn->connect_error;
         }
         
-        $sql = "INSERT INTO usuario (id,numero, predio, is_lab) VALUES (?,?,?,?)";
+        $sql = "INSERT INTO sala (id,numero, predio, lab) VALUES (?,?,?,?)";
         if ($stmt = $conn->prepare($sql)) { // assuming $mysqli is the connection
-            $stmt->bind_param("ssss", $id,$numero, $predio, $is_lab;
+            $stmt->bind_param("iiii", $id,$numero, $predio, $lab);
             
             $stmt->execute();
             
@@ -95,7 +95,7 @@ class Usuario
     
     public function SelecionaDados($numero)
     {
-        $conn = new mysqli("localhost", "root", "root", "reserva");
+        $conn = new mysqli("us-cdbr-east-04.cleardb.com", "b638c2eed6dd4e", "bc103914", "heroku_28d45ded57ee25e");
         
         if ($conn->connect_error) {
             echo "error: " . $conn->connect_error;
@@ -119,9 +119,9 @@ class Usuario
         // any additional code you need would go here.
     }
   
-    public function DeletaDados($Id)
+    public function DeletaDados($id)
     {
-        $conn = new mysqli("localhost", "root", "root", "reserva");
+        $conn = new mysqli("us-cdbr-east-04.cleardb.com", "b638c2eed6dd4e", "bc103914", "heroku_28d45ded57ee25e");
         
         if ($conn->connect_error) {
             echo "error: " . $conn->connect_error;
