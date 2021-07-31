@@ -5,8 +5,8 @@ class Reserva
     
     private $id;
     private $id_sala;
-    private $horario_de_uso;
-    private $dia_de_uso;
+    private $horario_uso;
+    private $dia_uso;
     private $responsavel;
     private $curso;
     private $ocupado;
@@ -32,7 +32,7 @@ class Reserva
      */
     public function getHorarioDeUso()
     {
-        return $this->horario_de_uso;
+        return $this->horario_uso;
     }
 
     /**
@@ -40,7 +40,7 @@ class Reserva
      */
     public function getDiaDeUso()
     {
-        return $this->dia_de_uso;
+        return $this->dia_uso;
     }
 
     /**
@@ -92,30 +92,64 @@ class Reserva
     }
 
     /**
-     * @param mixed $horario_de_uso
+     * @param mixed $horario_uso
      */
-    public function setHorario_de_uso($horario_de_uso)
+    public function setHorario_de_uso($horario_uso)
     {
-        $this->horario_de_uso = $horario_de_uso;
+        $this->horario_uso = $horario_uso;
     }
 
     /**
-     * @param mixed $dia_de_uso
+     * @param mixed $dia_uso
      */
-    public function setDia_de_uso($dia_de_uso)
+    public function setDia_de_uso($dia_uso)
     {
-        $this->dia_de_uso = $dia_de_uso;
+        $this->dia_uso = $dia_uso;
     }
 
-    public function setUpdateReserva($id, $id_sala, $horario_de_uso, $dia_de_uso, $responsavel, $curso, $ocupado, $observacao){
+    /**
+     * @param mixed $dia_uso
+     */
+    public function setResponsavel($responsavel)
+    {
+        $this->responsavel = $responsavel;
+    }
+
+    /**
+     * @param mixed $dia_uso
+     */
+    public function setCurso($curso)
+    {
+        $this->curso = $curso;
+    }
+
+    /**
+     * @param mixed $dia_uso
+     */
+    public function setOcupado($ocupado)
+    {
+        $this->ocupado = $ocupado;
+    }
+
+    /**
+     * @param mixed $dia_uso
+     */
+    public function setObservacao($observacao)
+    {
+        $this->observacao = $observacao;
+    }
+    
+
+
+    public function setUpdateReserva($id, $id_sala, $horario_uso, $dia_uso, $responsavel, $curso, $ocupado, $observacao){
         $conn = new mysqli("localhost", "root", "root", "biblioteca");
         
         if ($conn->connect_error) {
             echo "error: " . $conn->connect_error;
         }
-        $sql = "UPDATE reserva SET id_sala = ?, horario_de_uso = ?, dia_de_uso = ?, responsavel = ?, curso = ?, ocupado = ?, observacao = ? WHERE id = $id";
+        $sql = "UPDATE reserva SET id_sala = ?, horario_uso = ?, dia_uso = ?, responsavel = ?, curso = ?, ocupado = ?, observacao = ? WHERE id = $id";
         if ($stmt = $conn->prepare($sql)) { // assuming $mysqli is the connection
-            $stmt->bind_param("issssis", $id_sala, $horario_de_uso, $dia_de_uso, $responsavel, $curso, $ocupado, $observacao);
+            $stmt->bind_param("issssis", $id_sala, $horario_uso, $dia_uso, $responsavel, $curso, $ocupado, $observacao);
             
             $stmt->execute();
             
@@ -127,7 +161,7 @@ class Reserva
         }
     }
 
-    public function insereDados($id, $id_sala, $horario_de_uso, $dia_de_uso, $responsavel, $curso, $ocupado, $observacao)
+    public function insereDados($id, $id_sala, $horario_uso, $dia_uso, $responsavel, $curso, $ocupado, $observacao)
     {
         $conn = new mysqli("localhost", "root", "root", "reserva");
         
@@ -135,9 +169,9 @@ class Reserva
             echo "error: " . $conn->connect_error;
         }
         
-        $sql = "INSERT INTO reserva (id, id_sala, horario_de_uso, dia_de_uso, responsavel, curso, ocupado, observacao) VALUES (?,?,?,?)";
+        $sql = "INSERT INTO reserva (id, id_sala, horario_uso, dia_uso, responsavel, curso, ocupado, observacao) VALUES (?,?,?,?)";
         if ($stmt = $conn->prepare($sql)) { // assuming $mysqli is the connection
-            $stmt->bind_param("issssis", $id_sala, $horario_de_uso, $dia_de_uso, $responsavel, $curso, $ocupado, $observacao);
+            $stmt->bind_param("issssis", $id_sala, $horario_uso, $dia_uso, $responsavel, $curso, $ocupado, $observacao);
             
             $stmt->execute();
             
