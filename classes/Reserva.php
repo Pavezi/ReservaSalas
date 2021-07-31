@@ -24,7 +24,7 @@ class Reserva
      */
     public function getIdSala()
     {
-        return $this->id_Sala;
+        return $this->id_sala;
     }
 
     /**
@@ -142,7 +142,7 @@ class Reserva
 
 
     public function setUpdateReserva($id, $id_sala, $horario_uso, $dia_uso, $responsavel, $curso, $ocupado, $observacao){
-        $conn = new mysqli("localhost", "root", "root", "biblioteca");
+        $conn = new mysqli("b638c2eed6dd4e:bc103914@us-cdbr-east-04.cleardb.com", "b638c2eed6dd4e", "bc103914", "heroku_28d45ded57ee25e");
         
         if ($conn->connect_error) {
             echo "error: " . $conn->connect_error;
@@ -163,29 +163,29 @@ class Reserva
 
     public function insereDados($id, $id_sala, $horario_uso, $dia_uso, $responsavel, $curso, $ocupado, $observacao)
     {
-        $conn = new mysqli("localhost", "root", "root", "reserva");
-        
+        $conn = new mysqli("us-cdbr-east-04.cleardb.com", "b638c2eed6dd4e", "bc103914", "heroku_28d45ded57ee25e");
+      
         if ($conn->connect_error) {
             echo "error: " . $conn->connect_error;
         }
         
-        $sql = "INSERT INTO reserva (id, id_sala, horario_uso, dia_uso, responsavel, curso, ocupado, observacao) VALUES (?,?,?,?)";
+        $sql = "INSERT INTO reserva (id, id_sala, horario_uso, dia_uso, responsavel, curso, ocupado, observacao) VALUES (?,?,?,?,?,?,?,?)";
         if ($stmt = $conn->prepare($sql)) { // assuming $mysqli is the connection
-            $stmt->bind_param("issssis", $id_sala, $horario_uso, $dia_uso, $responsavel, $curso, $ocupado, $observacao);
+            $stmt->bind_param("iissssis", $id, $id_sala, $horario_uso, $dia_uso, $responsavel, $curso, $ocupado, $observacao);
             
             $stmt->execute();
             
                     $conn->close();
                     // any additional code you need would go here.
                 } else {
-                    $error = $stmt->errno . ' ' . $stmt->error;
+                    $error = $stmt->error . ' ' . $stmt->error;
                     echo $error; // 1054 Unknown column 'foo' in 'field list'
                 }
     }
     
     public function SelecionaDados($id)
     {
-        $conn = new mysqli("localhost", "root", "root", "reserva");
+        $conn = new mysqli("b638c2eed6dd4e:bc103914@us-cdbr-east-04.cleardb.com", "b638c2eed6dd4e", "bc103914", "heroku_28d45ded57ee25e");
         
         if ($conn->connect_error) {
             echo "error: " . $conn->connect_error;
@@ -198,7 +198,7 @@ class Reserva
     
     public function SelecionaDadosGerais()
     {
-        $conn = new mysqli("localhost", "root", "root", "reserva");
+        $conn = new mysqli("b638c2eed6dd4e:bc103914@us-cdbr-east-04.cleardb.com", "b638c2eed6dd4e", "bc103914", "heroku_28d45ded57ee25e");
         
         if ($conn->connect_error) {
             echo "error: " . $conn->connect_error;
@@ -211,7 +211,7 @@ class Reserva
     
     public function DeletaDados($id)
     {
-        $conn = new mysqli("localhost", "root", "root", "reserva");
+        $conn = new mysqli("b638c2eed6dd4e:bc103914@us-cdbr-east-04.cleardb.com", "b638c2eed6dd4e", "bc103914", "heroku_28d45ded57ee25e");
         
         if ($conn->connect_error) {
             echo "error: " . $conn->connect_error;
@@ -224,5 +224,3 @@ class Reserva
     }
     
 }
-
-?>

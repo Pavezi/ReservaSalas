@@ -2,18 +2,16 @@
 
 require_once 'config.php';
 
-if (isset($_POST["titulo"])) {
+if (isset($_POST["id"])) {
     
-    $livro = new Livro();
-    $livro->setTitulo_livro($_POST["titulo"]);
-    $livro->setEdicao_livro($_POST["edicao"]);
-    $livro->setAno_publicacao_livro($_POST["ano_publicacao"]);
-    $livro->setAssunto($_POST["assunto"]);
-    $livro->setIsbn($_POST["isbn"]);
-    $livro->setNome_autor($_POST["autor"]);
+    $sala = new Sala();
+    $sala->setId($_POST["id"]);
+    $sala->setNumero($_POST["numero"]);
+    $sala->setpredio($_POST["predio"]);
+	$sala->setIs_lab($_POST["lab"]);
 
     try {
-        $result = $livro->insereDados($livro->getTitulo_livro(), $livro->getEdicao_livro(), $livro->getAno_publicacao_livro(), $livro->getAssunto(), $livro->getIsbn(), $livro->getNome_autor());
+        $result = $sala->insereDados($sala->getId(), $sala->getNumero(), $sala->getPredio(), $sala->getIs_lab());
 
         // assign a variable
         if (!isset($_SESSION)) {
@@ -119,35 +117,25 @@ if (isset($_POST["titulo"])) {
 		<div class="row">
 			<div class="col-sm-12">
 				
-				<form id="loja" action="cadastroLivro.php" method="post" onsubmit="this.submit(); this.reset(); return false;">
-					<h2><i>CADASTRO LIVRO</i></h2>
+				<form id="loja" action="cadastroSala.php" method="post" onsubmit="this.submit(); this.reset(); return false;">
+					<h2><i>CADASTRO SALA</i></h2>
 					<br>
-					<label for="lbl_titulo"><b>TÍTULO DO LIVRO</b></label> <input
-						type="text" id="titulo" name="titulo" maxlength="100"
-						required="required" placeholder="Insira o titulo completo aqui">
+					<label for="lbl_titulo"><b>ID da Sala</b></label> <input
+						type="number" id="id" name="id" 
+						required="required" placeholder="Insira o id aqui">
 
-					<label for="lbl_edicao"><b>EDIÇÃO DO LIVRO</b></label> <input type="text" id="edicao"
-						name="edicao" maxlength="100" required="required"
-						placeholder="Insira a edicao aqui"> 
+					<label for="lbl_edicao"><b>Numero da Sala</b></label> <input type="number" id="numero"
+						name="numero" required="required"
+						placeholder="Insira a sala aqui"> 
 					
-					<label for="lbl_ano_publicacao"><b>ANO PUBLICAÇÃO DO LIVRO</b></label> <input type="text"
-						id="ano_publicacao" name="ano_publicacao" required="required" maxlength="4"
-						placeholder="Insira o ano de publicacao aqui"> 
-						
-					<label for="lbl_assunto"><b>ASSUNTO</b></label>
-					<input type="text" id="assunto" name="assunto" maxlength="200"
-						required="required" placeholder="Insira o assunto aqui"> 
-						
-					<label
-						for="lbl_isbn"><b>ISBN</b></label> <input type="text" id="isbn"
-						name="isbn" maxlength="15" required="required"
-						placeholder="Insira o isbn aqui"> 
-						
-					
-					<label for="lbl_autor"><b>AUTOR</b></label>
-					<input type="text" id=autor name="autor" maxlength="100"
-						required="required" placeholder="Insira o autor aqui"> 
-						
+					<label for="lbl_ano_publicacao"><b>Predio</b></label> <input type="number"
+						id="predio" name="predio" required="required" 
+						placeholder="Insira o prédio aqui"> 
+
+					<label for="lbl_ano_publicacao"><b>É Laboratório</b></label> <input type="number"
+						id="lab" name="lab" required="required"
+						placeholder="Insira o lab  aqui"> 
+
 						<br/>
 					<br/><input type="submit" value="Cadastrar" >
 				</form>
