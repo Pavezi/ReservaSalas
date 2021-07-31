@@ -107,6 +107,40 @@ class Reserva
         $this->dia_de_uso = $dia_de_uso;
     }
 
+    /**
+     * @param mixed $dia_de_uso
+     */
+    public function setResponsavel($responsavel)
+    {
+        $this->responsavel = $responsavel;
+    }
+
+    /**
+     * @param mixed $dia_de_uso
+     */
+    public function setCurso($curso)
+    {
+        $this->curso = $curso;
+    }
+
+    /**
+     * @param mixed $dia_de_uso
+     */
+    public function setOcupado($ocupado)
+    {
+        $this->ocupado = $ocupado;
+    }
+
+    /**
+     * @param mixed $dia_de_uso
+     */
+    public function setObservacao($observacao)
+    {
+        $this->observacao = $observacao;
+    }
+    
+
+
     public function setUpdateReserva($id, $id_sala, $horario_de_uso, $dia_de_uso, $responsavel, $curso, $ocupado, $observacao){
         $conn = new mysqli("localhost", "root", "root", "biblioteca");
         
