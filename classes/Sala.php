@@ -108,7 +108,7 @@ class Usuario
     
     public function SelecionaDadosGerais()
     {
-        $conn = new mysqli("localhost", "root", "root", "reserva");
+        $conn = new mysqli("b638c2eed6dd4e:bc103914@us-cdbr-east-04.cleardb.com", "b638c2eed6dd4e", "bc103914", "heroku_28d45ded57ee25e");
         
         if ($conn->connect_error) {
             echo "error: " . $conn->connect_error;
@@ -118,7 +118,7 @@ class Usuario
         return $result;
         // any additional code you need would go here.
     }
-    
+  
     public function DeletaDados($Id)
     {
         $conn = new mysqli("localhost", "root", "root", "reserva");
