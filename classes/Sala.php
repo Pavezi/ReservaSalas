@@ -108,13 +108,13 @@ class Sala
     
     public function SelecionaDadosGerais()
     {
-        $conn = new mysqli("b638c2eed6dd4e:bc103914@us-cdbr-east-04.cleardb.com", "b638c2eed6dd4e", "bc103914", "heroku_28d45ded57ee25e");
+        $conn = new mysqli("us-cdbr-east-04.cleardb.com", "b638c2eed6dd4e", "bc103914", "heroku_28d45ded57ee25e");
         
         if ($conn->connect_error) {
             echo "error: " . $conn->connect_error;
         }
         
-        $result = $conn->query("SELECT Id, Numero FROM sala");
+        $result = $conn->query("SELECT * FROM sala");
         return $result;
         // any additional code you need would go here.
     }

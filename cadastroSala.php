@@ -35,118 +35,97 @@ if (isset($_POST["id"])) {
 }
 
 ?>
-
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
-  <title>Sistema de Controle da Biblioteca</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="css/formulario.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
-<script type="text/javascript" src="css/validacoes.js"></script>
-  <style>
-
-  </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body>
+<body onload="gerarMenu()">
+  <header><h1>Todas as salas</h1></header>
+  <section class="cadastro_salas">
+    <p>CADASTRO DE SALAS</p>
+	<form action="cadastroSala.php" method="post" onsubmit="this.submit(); this.reset(); return false;">
+		Id da sala: <input  type="number" id="id" name="id"><br>
+		Número da sala: <input  type="number" id="numero" name="numero"><br>
+		Laboraótio: <input  type="number" id="lab" name="lab"><br>
+		<p>Prédio:
+			<input type="radio" id="predio" name="predio" value="1">AMF 1
+			<input type="radio" id="predio" name="predio" value="2">AMF 2   
+			<input type="radio" id="predio" name="predio" value="3">AMF 3
+			<input class="botao_criar" type="submit" value="CRIAR">
+		</p>
+	</form>
+  </section>
+  
 
-<div class="jumbotron text-center" style="margin-bottom:0">
-<h1><b><i>
-<img src="imagens/logo.png"> <br><br>	Sistema de Controle da Biblioteca</i></b></h1>
-	
-</div>
+  <section id="menu">
 
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="#">Menu</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <!-- Dropdown -->
-      <li class="nav-item">
-        <a class="nav-link" href="index.php"><img src="imagens/home.png" style="height: 23px; width: 23px; padding-bottom: 2px;"> Home</a>
-      </li>
-      <li class="nav-item dropdown">
-	      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-	        <img src="imagens/livro.png" style="height: 23px; width: 20px; padding-bottom: 2px;"> Livros
-	      </a>
-	      <div class="dropdown-menu">
-	        <a class="dropdown-item" href="cadastroLivro.php">Cadastro Livro</a>
-	        <a class="dropdown-item" href="pesquisaLivro.php">Pesquisa Livro</a>
-	      </div>
-      </li>
-      <li class="nav-item dropdown">
-	      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-	        <img src="imagens/revista.png" style="height: 23px; width: 23px; padding-bottom: 2px;"> Revistas
-	      </a>
-	      <div class="dropdown-menu">
-	        <a class="dropdown-item" href="cadastroRevista.php">Cadastro Revista</a>
-	        <a class="dropdown-item" href="pesquisaRevista.php">Pesquisa Revista</a>
-	      </div>
-      </li>
-      <li class="nav-item dropdown">
-	      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-	        <img src="imagens/usuario.png" style="height: 23px; width: 23px; padding-bottom: 2px;"> Usuário
-	      </a>
-	      <div class="dropdown-menu">
-	        <a class="dropdown-item" href="cadastroUsuario.php">Cadastro Usuário</a>
-	        <a class="dropdown-item" href="pesquisaUsuario.php">Pesquisa Usuário</a>
-	      </div>
-      </li>
-      <li class="nav-item dropdown">
-	      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-	        <img src="imagens/emprestimo.png" style="height: 23px; width: 23px; padding-bottom: 2px;"> Empréstimo
-	      </a>
-	      <div class="dropdown-menu">
-	        <a class="dropdown-item" href="cadastroEmprestimo.php">Cadastro Empréstimo Livro</a>
-	        <a class="dropdown-item" href="cadastroEmprestimoRevista.php">Cadastro Empréstimo Revista</a>
-	        <a class="dropdown-item" href="pesquisaEmprestimo.php">Pesquisa Empréstimo</a>
-	      </div>
-      </li>
-      </ul>
-  </div>  
-</nav>
+  </section>
 
-<div class="container-fluid" style="margin-top: 30px">
-		<div class="row">
-			<div class="col-sm-12">
-				
-				<form id="loja" action="cadastroSala.php" method="post" onsubmit="this.submit(); this.reset(); return false;">
-					<h2><i>CADASTRO SALA</i></h2>
-					<br>
-					<label for="lbl_titulo"><b>ID da Sala</b></label> <input
-						type="number" id="id" name="id" 
-						required="required" placeholder="Insira o id aqui">
-
-					<label for="lbl_edicao"><b>Numero da Sala</b></label> <input type="number" id="numero"
-						name="numero" required="required"
-						placeholder="Insira a sala aqui"> 
-					
-					<label for="lbl_ano_publicacao"><b>Predio</b></label> <input type="number"
-						id="predio" name="predio" required="required" 
-						placeholder="Insira o prédio aqui"> 
-
-					<label for="lbl_ano_publicacao"><b>É Laboratório</b></label> <input type="number"
-						id="lab" name="lab" required="required"
-						placeholder="Insira o lab  aqui"> 
-
-						<br/>
-					<br/><input type="submit" value="Cadastrar" >
-				</form>
-
-			</div>
-		</div>
-	</div>
-
-
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark"
-		style="margin-top: 20px"></nav>
-
+    <script src="script.php"></script>
+  </div>
 </body>
 </html>
+
+<?php
+
+require_once 'config.php';
+
+$sala = new Sala();
+    
+    try {
+        $result = $sala->SelecionaDadosGerais();
+        if ($result->num_rows != 0) {
+            
+            $msg = "";
+            
+            // começamos a concatenar nossa tabela
+            $msg .= " <div id='customers' class='table-responsive'>";
+            $msg .= "<table class='table'>";
+            $msg .= "    <thead>";
+            $msg .= "        <tr>";
+            $msg .= "            <th>TÍTULO</th>";
+            $msg .= "            <th>EDIÇÃO</th>";
+            $msg .= "            <th>ANO</th>";
+            $msg .= "            <th>ASSUNTO</th>";
+            $msg .= "            <th>ISBN</th>";
+            $msg .= "        </tr>";
+            $msg .= "    </thead>";
+            $msg .= "    <tbody>";
+            
+            foreach ($result as $res) {
+                
+                $msg .= "                <tr>";
+                $msg .= "                    <td class='filterable-cell'>" . $res['numero'] . "</td>";
+                $msg .= "                    <td class='filterable-cell'>" . $res['predio'] . "</td>";
+                $msg .= "                    <td class='filterable-cell'>" . $res['lab'] . "</td>";
+                
+                $msg .= "                </tr>";
+            }
+            $msg .= "    </tbody>";
+            $msg .= "</table>";
+            $msg .= "</div>";
+            
+            echo $msg;
+                
+            }        
+        else {
+            $msg = "";
+            $msg .= "Nenhum resultado foi encontrado...";
+            echo $msg;
+        }
+        
+
+        
+    } catch (ErrorException $e) {
+        echo $e->getMessage();
+        
+    }
+    ?>
